@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  
+  --color-brand-red: #DC2626;
+  --color-brand-darkred: #7F1D1D;
+  --color-brand-bg: #0A0A0A;
+  --color-brand-card: #111111;
+  --color-brand-secbg: #141414;
+  --color-brand-border: #222222;
+  --color-brand-text: #FFFFFF;
+  --color-brand-sectext: #A1A1AA;
+}
+
+@layer base {
+  body {
+    background: linear-gradient(
+      180deg,
+      #b91c1c 0%, /* red-700 */
+      #991b1b 50%, /* red-800 */
+      #450a0a 100% /* red-950 */
+    );
+    background-size: 300% 300%;
+    animation: backgroundPulse 20s infinite ease;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Background Pulse Animation */
+@keyframes backgroundPulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Title Glow Flicker Animation */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #dc2626;
+    color: #FFEEEE;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 6px #ff0000, 0 0 15px #7f1d1d, 0 0 30px #7f1d1d;
+    color: #FFAAAA;
+  }
+}
+
+/* Custom UI styling rules */
+.flicker-glow {
+  color: #FFEEEE;
+  text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #dc2626;
+  animation: flicker 4s infinite alternate;
+}
+
+
+.red-glow-shield {
+  filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.icon-glow {
+  filter: drop-shadow(0 0 8px #ff0000);
+}
+
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 35%, rgba(0, 0, 0, 0.92) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.smoke-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 0, 0, 0.35) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
